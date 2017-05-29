@@ -1,4 +1,11 @@
+# Description
 
+This lesson we create a new component called my-greetings.
+
+In this components we add my-hello, as well as an input field. The text in the input field will be provided to
+the hello component.
+
+# Additional notes
 
 To two-way bind to native elements or non-Polymer elements that don't follow this event naming convention, 
 you can specify a custom change event name in the annotation using the following syntax:
