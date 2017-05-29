@@ -1,0 +1,28 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-hello">
+    <template>
+
+        <!-- Write style here -->
+
+        <style>
+            #hello{
+                color: green;
+            }
+        </style>
+
+        <!-- Write html code here -->
+
+        <div id="hello">Hello world from polymer!</div>
+
+	</template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-hello'
+    });
+</script>

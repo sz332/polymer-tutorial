@@ -1,0 +1,93 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-list">
+    <template>
+
+        <!-- Write style here -->
+
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+
+        <!-- Write html code here -->
+
+        <iron-ajax id="ajax" url="data.json" handle-as="json" on-response="_handleResponse"></iron-ajax>
+
+        <button on-tap="_onButtonTap">Press me</button>
+
+        <template is="dom-if" if="{{_isValidData(data)}}">
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Value</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template is="dom-repeat" items="[[data]]">
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.value}}</td>
+                        </tr>
+                    </template>
+    </tbody>
+    </table>
+
+    </template>
+
+    <template is="dom-if" if="{{!_isValidData(data)}}">
+            No data received yet...
+        </template>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-list',
+        properties: {
+            data: {
+                type: Array,
+                value: function() {
+                    return [];
+                },
+                notify: true
+            }
+        },
+
+        _onButtonTap: function() {
+            this.$.ajax.generateRequest();
+        },
+
+        _isValidData: function(data) {
+            return data !== undefined && data !== null && data.length > 0;
+        },
+
+        _handleResponse: function(event) {
+            var list = event.detail.response;
+
+            if (this.data.length === 0) {
+                this.set('data', list);
+            } else {
+
+                for (var i = 0; i < list.length; i++) {
+                    this.push('data', list[i]);
+                }
+
+            }
+        }
+    });
+</script>

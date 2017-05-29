@@ -1,0 +1,39 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="my-counter.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-panel">
+    <template>
+        <!-- Write html code here -->
+
+        <button on-tap="_onButtonPressed">Press me</button>
+
+        <my-counter id="counter"></my-counter>
+
+        <div id="messagePanel">
+            Counter value was not set.
+        </div>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-panel',
+
+        listeners: {
+            'counter-event': '_onCounterEvent',
+        },
+
+        _onButtonPressed: function() {
+            this.$.counter.increaseCount();
+        },
+
+        _onCounterEvent: function(event, data) {
+            this.$.messagePanel.innerHTML = "Counter value became " + data.value;
+        }
+
+    });
+</script>

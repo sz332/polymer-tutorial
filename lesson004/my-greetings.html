@@ -1,0 +1,49 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="my-hello.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-greetings">
+    <template>
+
+        <style>
+
+            #myHello{
+                --my-color: red;
+            }
+
+            .myClass{
+                --my-color: blue;
+            }
+
+        </style>
+
+        <!-- Write html code here -->
+
+        Enter your name: <input value="{{username::input}}">
+        
+        <h1>This one is red</h1>
+
+        <my-hello id="myHello" name="{{username}}"></my-hello>
+
+        <h1>But this one remains green</h1>
+
+        <my-hello name="{{username}}"></my-hello>
+
+        <h1>Works also with class</h1>
+
+        <my-hello class="myClass" name="{{username}}"></my-hello>
+        <my-hello class="myClass" name="{{username}}"></my-hello>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-greetings',
+        properties: {
+            username: String
+        }
+    });
+</script>

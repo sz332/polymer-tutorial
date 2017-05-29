@@ -1,0 +1,25 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="my-hello.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-greetings">
+    <template>
+        <!-- Write html code here -->
+
+        Enter your name: <input value="{{username::input}}">
+        
+        <my-hello name="{{username}}"></my-hello>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-greetings',
+        properties: {
+            username: String
+        }
+    });
+</script>

@@ -1,0 +1,72 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-list">
+    <template>
+
+        <!-- Write style here -->
+
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+
+        <!-- Write html code here -->
+
+        <iron-ajax auto url="data.json" handle-as="json" on-response="_handleResponse"></iron-ajax>
+
+        <template is="dom-if" if="{{_isValidData(data)}}">
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Value</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template is="dom-repeat" items="{{data}}">
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.value}}</td>
+                        </tr>
+                    </template>
+    </tbody>
+    </table>
+
+    </template>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-list',
+        properties: {
+            data: {
+                type: Array,
+                value: function() {
+                    return null;
+                }
+            }
+        },
+
+        _isValidData: function(data) {
+            return data !== null;
+        },
+
+        _handleResponse: function(event) {
+            this.data = event.detail.response;
+        }
+    });
+</script>

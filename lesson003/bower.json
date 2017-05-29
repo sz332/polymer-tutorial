@@ -1,0 +1,21 @@
+{
+    "name": "my-polymer-tutorial",
+    "description": "polymer tutorial",
+    "main": "index.html",
+    "authors": [
+        "zsolt.sandor@gmail.com"
+    ],
+    "license": "BSD",
+    "homepage": "",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "polymer": "Polymer/polymer#^1.7.0"
+    }
+}

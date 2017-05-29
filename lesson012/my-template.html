@@ -1,0 +1,38 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-template">
+    <template>
+            <content id="templates" select="template"></content>
+	</template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-template',
+
+        behaviors: [
+            Polymer.Templatizer
+        ],
+
+        properties: {
+            label: String
+        },
+
+        ready: function() {
+            var template = Polymer.dom(this.$.templates).getDistributedNodes()[0];
+            this.templatize(template);
+        },
+
+        render: function() {
+            var instance = this.stamp({
+                label: this.label
+            });
+            return instance.root;
+        },
+
+
+    });
+</script>

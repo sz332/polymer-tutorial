@@ -1,0 +1,43 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-panel">
+    <template>
+        <!-- Write html code here -->
+
+        <div id="normalEntry">Normal entry not found</div>
+
+        <template is="dom-if" if="{{valid}}">
+            <div id="ifEntry">Entry inside dom-if not found</div>
+            <div id="ifEntry2">Entry2 inside dom-if not found</div>
+        </template>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-panel',
+
+        properties: {
+            valid: {
+                type: Boolean,
+                value: true
+            }
+        },
+
+        attached: function() {
+            // First way of accessing entry
+            this.$.normalEntry.innerHTML = "Normal entry found";
+
+            // If element is inside dom-if, the static linking does not work, use dynamic linking            
+            Polymer.dom(this.root).querySelector("#ifEntry").innerHTML = "Entry inside dom-if found";
+
+            // A syntax sugar to reach the same goal
+            this.$$("#ifEntry2").innerHTML = "Entry2 inside dom-if found";
+        }
+
+    });
+</script>

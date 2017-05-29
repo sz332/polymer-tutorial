@@ -1,0 +1,64 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-counter">
+    <template>
+
+        <!-- Write style here -->
+
+        <style>
+            #counter {
+                background-color: #c06;
+                border: 3px solid #000;
+                height: 150px;
+                width: 150px;
+                -webkit-border-radius: 75px;
+                -moz-border-radius: 75px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #counter span{
+                font-size: 50px;
+                color: white;
+            }
+
+        </style>
+
+        <!-- Write html code here -->
+
+        <div id="counter">
+            <span>[[counter]]</span>
+        </div>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-counter',
+        properties: {
+            counter: {
+                type: Number,
+                value: 0,
+                observer: '_counterChanged'
+            }
+        },
+
+        increaseCount: function() {
+            this.counter++;
+        },
+
+        _counterChanged: function() {
+            if (this.counter % 5 === 0) {
+                this.fire('counter-event', {
+                    value: this.counter
+                });
+            }
+        }
+
+    });
+</script>

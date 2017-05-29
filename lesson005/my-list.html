@@ -1,0 +1,40 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-list">
+    <template>
+
+        <!-- Write style here -->
+
+        <style>
+            li {
+                text-transform: capitalize;
+            }
+        </style>
+
+        <!-- Write html code here -->
+
+        <ul>
+            <template is="dom-repeat" items="{{data}}">
+                <li>{{item}}</li>
+            </template>
+    </ul>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-list',
+        properties: {
+            data: {
+                type: Array,
+                value: function() {
+                    return [];
+                }
+            }
+        }
+    });
+</script>

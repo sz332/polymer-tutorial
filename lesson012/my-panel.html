@@ -1,0 +1,51 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="my-hello.html">
+<link rel="import" href="my-template.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-panel">
+    <template>
+        <style>
+        </style>
+
+        <!-- Write html code here -->
+            <h1>Hello world from template!</h1>
+            
+            <my-template id="template" label="Testing 1 2 3">
+                <template>
+                    <style>
+                        my-hello{
+                            --my-color: blue;
+                        }
+                    </style>
+                    <my-hello name="{{label}}"></my-hello>
+                </template>
+    </my-template>
+
+    <div id="canvas">
+
+    </div>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-panel',
+
+        properties: {
+            valid: {
+                type: Boolean,
+                value: true
+            }
+        },
+
+        attached: function() {
+            var entry = this.$.template.render();
+            Polymer.dom(this.$.canvas).appendChild(entry);
+        }
+
+    });
+</script>

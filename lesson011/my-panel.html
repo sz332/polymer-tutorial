@@ -1,0 +1,38 @@
+<!-- Imports polymer -->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="my-hello.html">
+
+<!-- Defines element markup -->
+<dom-module id="my-panel">
+    <template>
+        <style>
+            my-hello{
+                --my-color: red;
+            }
+        </style>
+
+        <!-- Write html code here -->
+
+        <div id="normalEntry">Normal entry not found</div>
+
+        <template is="dom-if" if="{{valid}}">
+            This shall be red: <my-hello name="John Doe"></my-hello>
+        </template>
+
+    </template>
+</dom-module>
+
+<!-- Registers custom element -->
+<script>
+    Polymer({
+        is: 'my-panel',
+
+        properties: {
+            valid: {
+                type: Boolean,
+                value: true
+            }
+        }
+
+    });
+</script>
