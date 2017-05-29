@@ -1,3 +1,7 @@
+# Introduction
+
+This repository contains a short tutorial for Polymer 1.x.
+
 # Installation
 
 The following chapter describes the installation process of NPM and bower. This steps 
