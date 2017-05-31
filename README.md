@@ -35,12 +35,12 @@ Download and install nodejs from [nodejs.org](https://nodejs.org)
 # Usage
 
 The following chapter describes the steps required to install every project specific
-dependencies. This steps must be executed for each project.
+dependencies. 
 
 ## 1. Install project dependencies 
 
 ```cmd
-cd lessonXXX
+cd polymer-tutorial
 bower install
 ```
 
@@ -49,25 +49,23 @@ This command will create a bower_components folder with necessary dependencies.
 ## 2. Start web server
 
 ```cmd
+cd polymer-tutorial
 polymer serve
 ```
 
 The result output will be something like:
 
 ```
-Starting Polyserve...
-    serving on port: 8081
-    from root: d:\Private\polymer\lesson001
-
-Files in this directory are available under the following URLs
-    applications: http://localhost:8081
-    reusable components: http://localhost:8081/components/my-polymer-tutorial/
+λ polymer serve
+info: Files in this directory are available under the following URLs
+      applications: http://127.0.0.1:8081
+      reusable components: http://127.0.0.1:8081/components/my-polymer-tutorial/
 ```
 
 ## 3. Open the url provided by polymer serve in a browser
 
 ```cmd
-chrome http://localhost:8081/components/my-polymer-tutorial/
+chrome http://127.0.0.1:8081
 ```
 
 ## 4. Start coding
@@ -78,10 +76,4 @@ chrome http://localhost:8081/components/my-polymer-tutorial/
 
 Check your proxy settings, check whether you provided user name and password as well.
 
-## Browser did not displayed anything
-
-Ensure that url contains the trailing /
-
-Correct: http://localhost:8081/components/my-polymer-tutorial/
-Incorrect: http://localhost:8081/components/my-polymer-tutorial
 
